@@ -11,7 +11,7 @@ pipeline {
 
         stage('Unit Test with JaCoCo') {
             steps {
-                sh "mvn test"
+                sh "mvn verify"
                 junit '**/target/surefire-reports/*.xml'
                 publishHTML(target: [
                     allowMissing: true,
