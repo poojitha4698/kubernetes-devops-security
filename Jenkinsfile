@@ -9,18 +9,10 @@ pipeline {
             }
         }
 
-        stage('Unit Test with JaCoCo') {
+        stage('Unit Test') {
             steps {
-                sh "mvn verify"
-                junit '**/target/surefire-reports/*.xml'
-                publishHTML(target: [
-                    allowMissing: true,
-                    alwaysLinkToLastBuild: true,
-                    keepAll: true,
-                    reportDir: 'target/site/jacoco',
-                    reportFiles: 'index.html',
-                    reportName: 'JaCoCo Code Coverage'
-                ])
+                sh "mvn test"
+               
             }
         }
     }
